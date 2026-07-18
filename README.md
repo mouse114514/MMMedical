@@ -1,21 +1,40 @@
 # MMMedical
 
-Casualties Unknown — 医疗训练游戏模式模组
+Medical training game mode mod for **Casualties Unknown Demo**.
 
-## 安装
-1. 安装 [BepInEx](https://github.com/BepInEx/BepInEx) 到 Casualties Unknown Demo
-2. 将 `MMMedical.dll` 放入 `BepInEx/plugins/`
+## Installation
+1. Install [BepInEx](https://github.com/BepInEx/BepInEx) into Casualties Unknown Demo
+2. Drop `MMMedical.dll` into `BepInEx/plugins/`
 
-## 功能
-- 教程课程列表新增 **MMM** 选项，无需解锁
-- 按 B 吠叫开始 → 随机创伤施加 → 地上生成5件随机医疗装备
-- 偶数轮弹出**许愿面板**（像素风黑白UI），从23种装备中选1件，100%出现在本轮补给中
-- 治疗完毕按 B 吠叫 → 100倍速校验5秒 → 评分
-- 评分 >5 有50%概率难度 N+1
-- 开局 INT=20，饥饿/口渴/精力自动维持
+## Features
+- Adds **MMM** course to the tutorial list (no unlock required)
+- Press **B** to bark → random traumas applied → 5 random medical items spawn on the ground
+- **Even rounds**: wish screen pops up (pixel-art black & white UI) — pick 1 of 7 random items, guaranteed to appear in that round's supply
+- Treat injuries, then press **B** to verify → 100x speed fast-forward for 5 seconds → score
+- Score >5 has 50% chance to increase difficulty (N+1)
+- Starting INT=20, hunger/thirst/energy auto-maintained
 
-## 构建
+## Scoring
+| Check | Points |
+|-------|--------|
+| Blood pressure 60–140 | 3.0 |
+| No internal bleeding | 0.5 |
+| No external bleeding | 0.5 |
+| No fibrillation | 1.0 |
+| No stroke / hemothorax | 1.0 |
+| Consciousness >0.5 | 1.0 |
+| Happiness >0.3 | 0.7 |
+| Sickness <0.2 | 0.3 |
+| Muscle health bonus | muscleHealth/10 |
+
+Death → locked at 0.
+
+## Build
 ```bash
 dotnet build -c Release
 ```
-需要 .NET SDK 9.0+ 和 `net472` 目标框架。
+Requires .NET SDK 9.0+ and `net472` target framework.
+
+## Dependencies
+- [BepInEx 5](https://github.com/BepInEx/BepInEx)
+- [HarmonyX](https://github.com/pardeike/Harmony)
